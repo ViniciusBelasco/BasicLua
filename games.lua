@@ -4,7 +4,7 @@ local function Main()
 	io.write("Pick a game \n")
 	io.write("1) Guess game \n")
 	io.write("2) Improved Guess Game \n")
-	io.write("")
+	io.write("3) Rock-Paper-Scissors\n")
 
 	whichgame = io.read("*n")
 
@@ -88,6 +88,22 @@ local function Main()
 
 		io.write("Player chose ", move[player], "\n")
 		io.write("Computer chose ", move[computer], "\n")
+
+		if player == computer then
+			io.write("It's a draw.\n\n")
+		elseif
+			(player == 1 and computer == 2)
+			or (player == 2 and computer == 3)
+			or (player == 3 and computer == 1)
+		then
+			io.write("Computer wins!.\n\n")
+		elseif
+			(player == 1 and computer == 3)
+			or (player == 2 and computer == 1)
+			or (player == 3 and computer == 2)
+		then
+			io.write("Player wins!\n\n")
+		end
 	end
 end
 
