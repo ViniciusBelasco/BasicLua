@@ -2,8 +2,8 @@ local function Main()
 	local whichgame = 0
 
 	io.write("Pick a game \n")
-	io.write("1) Guess game ")
-	io.write("")
+	io.write("1) Guess game \n")
+	io.write("2) Improved Guess Game \n")
 	io.write("")
 
 	whichgame = io.read("*n")
@@ -33,7 +33,40 @@ local function Main()
 			count = count + 1
 		end
 	elseif whichgame == 2 then
-    --improved guess
+		--improved guess
+		local guess1 = math.random(100)
+		local guess2
+		local count = 0
+		local number
+
+		io.write("Enter a number for me to guess (1-100): ")
+		number = io.read("*n")
+		io.write("I guess ", guess1, "\n")
+		count = count + 1
+
+		while guess1 ~= number do
+			if guess1 < number then
+				io.write("That's not right. ")
+				guess2 = math.random(guess1, 100)
+				while guess2 <= guess1 do
+					guess2 = math.random(guess2, 100)
+				end
+				io.write("I guess ", guess2, "\n")
+				count = count + 1
+			elseif guess1 > number then
+				io.write("That's not right. ")
+				guess2 = math.random(guess1)
+				while guess2 >= guess1 do
+					guess2 = math.random(guess2)
+				end
+				io.write("I guess ", guess2, "\n")
+				count = count + 1
+			end
+
+			guess1 = guess2
+		end
+
+		io.write("You got it right after ", count, "tries! \n\n")
 	elseif whichgame == 3 then
 	end
 end
