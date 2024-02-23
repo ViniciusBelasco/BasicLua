@@ -68,6 +68,26 @@ local function Main()
 
 		io.write("You got it right after ", count, "tries! \n\n")
 	elseif whichgame == 3 then
+		-- Rock-Paper-Scissors
+
+		local computer = math.random(1, 3)
+		local player
+		local move = {}
+
+		move[1] = "Rock"
+		move[2] = "Paper"
+		move[3] = "Scissors"
+
+		io.write("Rock Paper Scissors Time! \n")
+		io.write("1) Rock \n")
+		io.write("2) Paper \n")
+		io.write("3) Scissors \n")
+		io.write("Enter your choice: ")
+
+		player = io.read("*n")
+
+		io.write("Player chose ", move[player], "\n")
+		io.write("Computer chose ", move[computer], "\n")
 	end
 end
 
