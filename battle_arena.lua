@@ -106,6 +106,50 @@ function RandomEnemy(level)
 	return enemy
 end
 
+function VisitArena(player)
+	local enemy = RandomEnemy(player.level)
+
+	while true do
+		ShowStats(player)
+		io.write("\n")
+		ShowStats(enemy)
+		io.write("An enemy has entered the arena!\n")
+		io.write("1) Battle\n")
+		io.write("2) Run Away\n")
+		io.write("3) Fight a tougher enemy\n")
+		io.write("4) Exit the arena\n")
+
+		local choice = Ask("What would you like to do? ", 4)
+
+		if choice == 1 then
+			local winner = Battle(player, enemy)
+
+			if player.name == winner.name then
+				LevelUp(player)
+				player.gold = player.gold + enemy.gold
+			else
+				io.write("\nGame Over...\n")
+				GenerateStats(player)
+			end
+			enemy = RandomEnemy(player.level)
+		elseif choice == 2 then
+			-- run away
+			if enemy.level > 1 then
+				enemy = RandomEnemy(enemy.level - 1)
+			else
+				io.write("That enemy can't get easier\n")
+			end
+		elseif choice == 3 then
+			-- Thogher enemy
+			enemy = RandomEnemy(enemy.level + 1)
+		else
+			-- Exit
+			io.write("\n\nYou brought shame to this mighty place!!!\n\n")
+			break
+		end
+	end
+end
+
 function LoadGame(player)
 	local fileIn = io.open("arena.txt", "r")
 
@@ -118,7 +162,6 @@ function LoadGame(player)
 		io.close(fileIn)
 		return true
 	else
-		io.close(fileIn)
 		return false
 	end
 end
