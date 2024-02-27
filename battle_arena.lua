@@ -4,7 +4,7 @@ function main()
 
 	local player = {}
 
-	local check = LoadGame()
+	local check = LoadGame(player)
 
 	if not check then
 		GenerateStats(player)
@@ -41,6 +41,28 @@ function Battle(player, enemy)
 	end
 end
 
+function LevelUp(player)
+	io.write("You Leveled!!\n")
+
+	player.hp = player.hp + 10
+	player.atk = player.atk + 0.5
+	player.def = player.def + 0.5
+	player.level = player.level + 1
+
+	io.write("1) Hit Points\n")
+	io.write("2) Attack\n")
+	io.write("3) Defense\n")
+
+	local choice = Ask("What stat would you like to increase? ", 3)
+	if choice == 1 then
+		player.hp = player.hp + 10
+	elseif choice == 2 then
+		player.atk = player.atk + 1
+	else
+		player.def = player.def + 1
+	end
+end
+
 function LoadGame(player)
 	local fileIn = io.open("arena.txt", "r")
 
@@ -61,14 +83,31 @@ end
 function SaveGame(player)
 	local fileArena = io.open("arena.txt", "w")
 
-	fileArena:write(player.name, "\n")
-	fileArena:write(player.hp, "\n")
-	fileArena:write(player.atk, "\n")
-	fileArena:write(player.def, "\n")
-	fileArena:write(player.level, "\n")
-	fileArena:write(player.gold, "\n")
+	if fileArena ~= nil then
+		fileArena:write(player.name, "\n")
+		fileArena:write(player.hp, "\n")
+		fileArena:write(player.atk, "\n")
+		fileArena:write(player.def, "\n")
+		fileArena:write(player.level, "\n")
+		fileArena:write(player.gold, "\n")
+	end
 
 	io.close(fileArena)
+end
+
+function ShowStats(structure)
+	io.write("\nName: ", structure.name, "\n")
+	if structure.level ~= nil then
+		io.write("Level: ", structure.level, "\n")
+	end
+	io.write("HP: ", structure.hp, "\n")
+	io.write("Attack: ", structure.atk, "\n")
+	io.write("Defense: ", structure.def, "\n")
+
+	if structure.gold ~= nil then
+		io.write("Gold: ", structure.gold, "\n")
+	end
+	io.write("\n")
 end
 
 main()
