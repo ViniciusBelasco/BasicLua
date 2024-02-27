@@ -78,6 +78,19 @@ function Ask(prompt, maxval)
 	end
 end
 
+function GenerateStats(person)
+	io.write("Welcome to the Arena!\n")
+	io.write("What is your name? ")
+	io.write("\n")
+
+	person.name = io.read("*l")
+	person.hp = 100
+	person.atk = 2
+	person.def = 10
+	person.level = 1
+	person.gold = 5
+end
+
 function LoadGame(player)
 	local fileIn = io.open("arena.txt", "r")
 
