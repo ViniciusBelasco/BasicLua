@@ -58,4 +58,17 @@ function LoadGame(player)
 	end
 end
 
+function SaveGame(player)
+	local fileArena = io.open("arena.txt", "w")
+
+	fileArena:write(player.name, "\n")
+	fileArena:write(player.hp, "\n")
+	fileArena:write(player.atk, "\n")
+	fileArena:write(player.def, "\n")
+	fileArena:write(player.level, "\n")
+	fileArena:write(player.gold, "\n")
+
+	io.close(fileArena)
+end
+
 main()
