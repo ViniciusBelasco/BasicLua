@@ -91,6 +91,21 @@ function GenerateStats(person)
 	person.gold = 5
 end
 
+function RandomEnemy(level)
+	local names = { "Minotaur", "Olog-Hai", "Chuck Norris", "The Blog", "Sepiroth", "THE Balrog" }
+
+	local enemy = {}
+
+	enemy.name = names[math.random(#names)]
+	enemy.hp = 50 + level * math.random(7, 14)
+	enemy.atk = 2 + math.floor(100 * level * (math.random() + 0.5)) / 100 -- round down ?
+	enemy.def = 10 + math.ceil(level * (math.random() + 0.5))
+	enemy.level = level
+	enemy.gold = 5 * level
+
+	return enemy
+end
+
 function LoadGame(player)
 	local fileIn = io.open("arena.txt", "r")
 
