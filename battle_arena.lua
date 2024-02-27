@@ -63,6 +63,21 @@ function LevelUp(player)
 	end
 end
 
+function Ask(prompt, maxval)
+	local input
+	while true do
+		io.write(prompt)
+
+		input = io.read("*n")
+		io.read("*l")
+
+		if input ~= nil and input >= 1 and input <= maxval then
+			return input
+		end
+		io.write("Invalid!!")
+	end
+end
+
 function LoadGame(player)
 	local fileIn = io.open("arena.txt", "r")
 
