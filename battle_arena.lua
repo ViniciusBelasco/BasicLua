@@ -98,7 +98,7 @@ function RandomEnemy(level)
 
 	enemy.name = names[math.random(#names)]
 	enemy.hp = 50 + level * math.random(7, 14)
-	enemy.atk = 2 + math.floor(100 * level * (math.random() + 0.5)) / 100 -- round down ?
+	enemy.atk = 2 + math.floor(100 * level * (math.random() + 0.5) / 100) -- round down ?
 	enemy.def = 10 + math.ceil(level * (math.random() + 0.5))
 	enemy.level = level
 	enemy.gold = 5 * level
@@ -179,6 +179,14 @@ function SaveGame(player)
 	end
 
 	io.close(fileArena)
+end
+
+function Attack(attacker, defender)
+	local damage = (10 + attacker.atk + math.random(6)) - defender.def
+
+	if damage >= 0 then
+		defender.hp = defender.hp - damage
+	end
 end
 
 function ShowStats(structure)
