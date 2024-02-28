@@ -156,6 +156,7 @@ function LoadGame(player)
 	if fileIn ~= nil then
 		player.name = fileIn:read("*l")
 		player.hp = fileIn:read("*n")
+		player.atk = fileIn:read("*n")
 		player.def = fileIn:read("*n")
 		player.level = fileIn:read("*n")
 		player.gold = fileIn:read("*n")
