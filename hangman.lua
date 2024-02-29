@@ -42,6 +42,28 @@ function main()
 	io.write("\n")
 	io.write("\n")
 	io.write("\n")
+
+	io.write("This is hangman game. You have to figure out the word by typing letters.\n")
+	io.write("You have a maximum of ", lives, " lives to solve the word and winning the game.\n")
+	io.write("Let's get started!!\n\n")
+	io.write("the word has ", aux, " letters.\n\n")
+
+	local letter
+	local i, j
+
+	local build = { phrase:len() }
+
+	for i = 1, phrase:len() do
+		local x = phrase:sub(i, i)
+
+		if x == " " then
+			build[i] = " "
+		elseif x == "'" then
+			build[i] = "'"
+		else
+			build[i] = "_"
+		end
+	end
 end
 
 main()
