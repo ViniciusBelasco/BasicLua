@@ -64,6 +64,93 @@ function main()
 			build[i] = "_"
 		end
 	end
+
+	while not ending do
+		fin = false
+		io.write("Enter a letter, please: ")
+		letter = io.read("*l")
+		letter = letter:upper()
+
+		while true do
+			while letter:len() ~= 1 or letter == " " do -- this control single letter input
+				io.write("Please Enter words with more than one letter or no blank spaces: ")
+				letter = io.read("*l")
+				letter = letter:upper()
+			end
+
+			while not fin do
+				if said:len() ~= 0 then
+					for i = 1, said:len() do
+						local s = said:sub(i, i)
+
+						s = s:upper()
+
+						if s == letter then
+							io.write("Please Enter words with more than one letter or no blank spaces: ")
+							letter = io.read("*l")
+							letter = letter:upper()
+							break
+						elseif i == said:len() then
+							fin = true
+						end
+					end
+				else
+					io.write("show this ELSE")
+					fin = true
+				end
+			end
+
+			if fin then
+				break
+			end
+			-- keep going
+
+			j = 0
+
+			for i = 1, phrase:len() do
+				local c = auxPhrase:sub(i, i)
+
+				if c == letter then
+					said = said .. letter
+					build[i] = letter
+					aux = aux - 1
+					j = j + 1
+				end
+			end
+
+			for i = 1, phrase:len() do
+				io.write(build[i])
+			end
+
+			io.write("\n")
+			io.write("\n\n")
+
+			if j == 0 then
+				lives = lives - 1
+				io.write("There is no ", letter, " in the word. You lost one live!\n")
+				io.write(lives, " live(s) left\n\n")
+
+				if lives == 0 then
+					ending = true
+				end
+			end
+
+			if aux > 0 then
+				io.write("There are ", aux, "L Letters left\n\n")
+			else
+				ending = true
+			end
+		end
+
+		if lives == 0 then
+			io.write("SORRY!! You lost the game!\n")
+		else
+			io.write("YAI!! CONGRATULATIONS!! YOU WON! \n")
+			io.write("YAI!! CONGRATULATIONS!! YOU WON! \n")
+			io.write("YAI!! CONGRATULATIONS!! YOU WON! \n")
+		end
+		io.write("The word was ", auxPhrase, "\n")
+	end
 end
 
 main()
