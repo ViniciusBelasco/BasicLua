@@ -135,27 +135,27 @@ function main()
 		--if fin then
 		--	break
 		--end
+
+		io.write("\n")
+		io.write("\n\n")
+
+		if j == 0 then
+			lives = lives - 1
+			io.write("There is no ", letter, " in the word. You lost one live!\n")
+			io.write(lives, " live(s) left\n\n")
+
+			if lives == 0 then
+				ending = true
+			end
+		end
+
+		if aux > 0 then
+			io.write("There are ", aux, "L Letters left\n\n")
+		else
+			ending = true
+		end
 	end
 
-	-- 		io.write("\n")
-	-- 		io.write("\n\n")
-	--
-	-- 		if j == 0 then
-	-- 			lives = lives - 1
-	-- 			io.write("There is no ", letter, " in the word. You lost one live!\n")
-	-- 			io.write(lives, " live(s) left\n\n")
-	--
-	-- 			if lives == 0 then
-	-- 				ending = true
-	-- 			end
-	-- 		end
-	--
-	-- 		if aux > 0 then
-	-- 			io.write("There are ", aux, "L Letters left\n\n")
-	-- 		else
-	-- 			ending = true
-	-- 		end
-	-- 	end
 	--
 	-- 	if lives == 0 then
 	-- 		io.write("SORRY!! You lost the game!\n")
