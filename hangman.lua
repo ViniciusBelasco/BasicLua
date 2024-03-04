@@ -70,10 +70,10 @@ function main()
 	end
 
 	while not ending do
-		local fin = false
 		io.write("Enter a letter, please: ")
 		letter = io.read("*l")
 		letter = letter:upper()
+		io.write("\n")
 
 		if aux == 0 then
 			ending = true
@@ -108,34 +108,6 @@ function main()
 			io.write(build[i])
 		end
 
-		--while not fin do
-		--	if said:len() ~= 0 then
-		--		for i = 1, said:len() do
-		--			local s = said:sub(i, i)
-
-		--			s = s:upper()
-
-		--			print(i)
-		--			print(said:len())
-		--			if s == letter then
-		--				io.write("Please Enter words with more than one letter or no blank spaces: ")
-		--				letter = io.read("*l")
-		--				letter = letter:upper()
-		--				break
-		--			elseif i == said:len() then
-		--				fin = true
-		--			end
-		--		end
-		--	else
-		--		print("saiu")
-		--		fin = true
-		--	end
-		--end
-
-		--if fin then
-		--	break
-		--end
-
 		io.write("\n")
 		io.write("\n\n")
 
@@ -150,22 +122,18 @@ function main()
 		end
 
 		if aux > 0 then
-			io.write("There are ", aux, "L Letters left\n\n")
+			io.write("There are ", aux, " Letters left\n\n")
 		else
 			ending = true
 		end
 	end
 
-	--
-	-- 	if lives == 0 then
-	-- 		io.write("SORRY!! You lost the game!\n")
-	-- 	else
-	-- 		io.write("YAI!! CONGRATULATIONS!! YOU WON! \n")
-	-- 		io.write("YAI!! CONGRATULATIONS!! YOU WON! \n")
-	-- 		io.write("YAI!! CONGRATULATIONS!! YOU WON! \n")
-	-- 	end
-	-- 	io.write("The word was ", auxPhrase, "\n")
-	-- end
+	if lives == 0 then
+		io.write("SORRY!! You lost the game!\n")
+	elseif aux == 0 and lives > 0 then
+		io.write("YAI!! CONGRATULATIONS!! YOU WON! \n")
+	end
+	io.write("The word was ", auxPhrase, "\n")
 end
 
 main()
