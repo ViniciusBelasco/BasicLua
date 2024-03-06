@@ -33,6 +33,13 @@ function main()
 	io.write("The player 1 in the O (one) and player 2 id the T (Two).\n")
 	io.write("\n")
 	io.write("Let's get started!!\n\n\n")
+
+	for i = 1, 5 do
+		for j = 1, 5 do
+			io.write(board[i][j])
+		end
+		io.write("\n")
+	end
 end
 
 main()
