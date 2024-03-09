@@ -74,6 +74,48 @@ function main()
 					turn = 2
 				end
 			end
+
+			--Control end game
+			for i = 1, 5 do
+				for j = 1, 5 do
+					if auxBoard[i][j] == "T" then
+						left = true
+					end
+					if i == 5 and j == 5 and not left then
+						finale = true
+					end
+				end
+			end
+
+			left = false
+
+			-- player 1 won
+			if board[1][1] == "O" and board[1][3] == "O" and board[1][5] == "O" then
+				win1 = true
+			end
+			if board[3][1] == "O" and board[3][3] == "O" and board[3][5] == "O" then
+				win1 = true
+			end
+			if board[5][1] == "O" and board[5][3] == "O" and board[5][5] == "O" then
+				win1 = true
+			end
+
+			if board[1][1] == "O" and board[3][1] == "O" and board[5][1] == "O" then
+				win1 = true
+			end
+			if board[1][3] == "O" and board[3][3] == "O" and board[5][3] == "O" then
+				win1 = true
+			end
+			if board[1][5] == "O" and board[3][5] == "O" and board[5][5] == "O" then
+				win1 = true
+			end
+
+			if board[1][1] == "O" and board[3][3] == "O" and board[5][5] == "O" then
+				win1 = true
+			end
+			if board[1][5] == "O" and board[3][3] == "O" and board[5][1] == "O" then
+				win1 = true
+			end
 		else
 			correct = false
 
