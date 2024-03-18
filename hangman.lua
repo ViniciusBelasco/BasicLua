@@ -69,6 +69,12 @@ function main()
 		end
 	end
 
+	while not ending do
+		io.write("Enter a letter, please: ")
+		repeat
+			letter = io.read("*l")
+		until letter:match("%S")
+		letter = letter:upper()
 		io.write("\n")
 
 		if aux == 0 then
