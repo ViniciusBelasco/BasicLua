@@ -10,6 +10,14 @@ function main()
 	io.write("Enter maximum lives: ")
 	lives = io.read("*n")
 
+	if not lives then
+		repeat
+			io.write("Enter the number of lives: ")
+			io.read("*l")
+			lives = io.read("*n")
+		until type(lives) == "number"
+	end
+
 	aux = phrase:len()
 
 	for k = 1, phrase:len() do
