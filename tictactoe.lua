@@ -128,6 +128,27 @@ function main()
 			io.write("\n")
 
 			while not correct do
+				if
+					(valueX == 2 or valueX == 4) and (valueY == 2 or valueY == 4)
+					or valueX > 5
+					or valueX < 0
+					or valueY > 5
+					or valueY < 0
+					or auxBoard[valueX][valueY] == "F"
+				then
+          io.write( "ERROR!! Can't place your move there. Player 2, please enter coordenates for X: " )
+          valueX = io.read("*n")
+          io.read("*l")
+          io.write( "Player 2, please enter coordenates for Y: ")
+          valueY = io.read("*n")
+          io.read("*l")
+          io.write("\n")
+        else
+          correct = true
+          auxBoard[valueX][valueY] = "F"
+          board[valueX][valueY] = "T"
+          turn = 1
+				end
 			end
 		end
 	end
