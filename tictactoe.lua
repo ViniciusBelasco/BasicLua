@@ -136,20 +136,85 @@ function main()
 					or valueY < 0
 					or auxBoard[valueX][valueY] == "F"
 				then
-          io.write( "ERROR!! Can't place your move there. Player 2, please enter coordenates for X: " )
-          valueX = io.read("*n")
-          io.read("*l")
-          io.write( "Player 2, please enter coordenates for Y: ")
-          valueY = io.read("*n")
-          io.read("*l")
-          io.write("\n")
-        else
-          correct = true
-          auxBoard[valueX][valueY] = "F"
-          board[valueX][valueY] = "T"
-          turn = 1
+					io.write("ERROR!! Can't place your move there. Player 2, please enter coordenates for X: ")
+					valueX = io.read("*n")
+					io.read("*l")
+					io.write("Player 2, please enter coordenates for Y: ")
+					valueY = io.read("*n")
+					io.read("*l")
+					io.write("\n")
+				else
+					correct = true
+					auxBoard[valueX][valueY] = "F"
+					board[valueX][valueY] = "T"
+					turn = 1
+				end
+
+				--end control
+
+				for i = 1, 5 do
+					for j = 1, 5 do
+						if auxBoard[i][j] == "T" then
+							left = true
+						end
+						if i == 5 and j == 5 and not left then
+							finale = true
+						end
+					end
+				end
+
+				left = false
+
+				-- player 2 won
+
+				if board[1][1] == "T" and board[1][3] == "T" and board[1][5] then
+					win2 = true
+				end
+				if board[3][1] == "T" and board[3][3] == "T" and board[3][5] then
+					win2 = true
+				end
+				if board[5][1] == "T" and board[5][3] == "T" and board[5][5] then
+					win2 = true
+				end
+
+				if board[1][1] == "T" and board[3][1] == "T" and board[5][1] then
+					win2 = true
+				end
+				if board[1][3] == "T" and board[3][3] == "T" and board[5][3] then
+					win2 = true
+				end
+				if board[1][5] == "T" and board[3][5] == "T" and board[5][5] then
+					win2 = true
+				end
+
+				if board[1][1] == "T" and board[3][3] == "T" and board[5][5] then
+					win2 = true
+				end
+				if board[1][5] == "T" and board[3][3] == "T" and board[5][1] then
+					win2 = true
 				end
 			end
+
+			-- show board game
+
+			for i = 1, 5 do
+				for j = 1, 5 do
+					io.write(board[i][j])
+				end
+				io.write("\n")
+			end
+		end
+
+		if not finale then
+			if win1 then
+				io.write("\nPlayer 1 won!!!\n")
+			end
+
+			if win2 then
+				io.write("\nPlayer 2 won!!!\n")
+			end
+		else
+			io.write("\nIt's a draw!!\n")
 		end
 	end
 end
