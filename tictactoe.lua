@@ -89,32 +89,39 @@ function main()
 
 			left = false
 
-			-- player 1 won
-			if board[1][1] == "O" and board[1][3] == "O" and board[1][5] == "O" then
+			-- Player 1 won
+			if board[1][1] == "O" then
+				if board[1][3] == "O" and board[1][5] == "O" then
+					win1 = true
+				end
+				if board[3][1] == "O" and board[5][1] == "O" then
+					win1 = true
+				end
+				if board[3][3] == "O" and board[5][5] == "O" then
+					win1 = true
+				end
+			end
+
+			if board[1][3] == "O" and board[3][3] == "O" and board[5][3] == "O" then
 				win1 = true
 			end
+
 			if board[3][1] == "O" and board[3][3] == "O" and board[3][5] == "O" then
 				win1 = true
 			end
+
 			if board[5][1] == "O" and board[5][3] == "O" and board[5][5] == "O" then
 				win1 = true
 			end
 
-			if board[1][1] == "O" and board[3][1] == "O" and board[5][1] == "O" then
-				win1 = true
-			end
-			if board[1][3] == "O" and board[3][3] == "O" and board[5][3] == "O" then
-				win1 = true
-			end
-			if board[1][5] == "O" and board[3][5] == "O" and board[5][5] == "O" then
-				win1 = true
-			end
+			if board[5][1] == "O" then
+				if board[3][3] == "O" and board[1][5] == "O" then
+					win1 = true
+				end
 
-			if board[1][1] == "O" and board[3][3] == "O" and board[5][5] == "O" then
-				win1 = true
-			end
-			if board[1][5] == "O" and board[3][3] == "O" and board[5][1] == "O" then
-				win1 = true
+				if board[5][3] == "O" and board[5][5] == "O" then
+					win1 = true
+				end
 			end
 		else
 			correct = false
@@ -167,31 +174,38 @@ function main()
 
 				-- player 2 won
 
-				if board[1][1] == "T" and board[1][3] == "T" and board[1][5] then
-					win2 = true
+				if board[1][1] == "T" then
+					if board[1][3] == "T" and board[1][5] == "T" then
+						win2 = true
+					end
+					if board[3][1] == "T" and board[5][1] == "T" then
+						win2 = true
+					end
+					if board[3][3] == "T" and board[5][5] == "T" then
+						win2 = true
+					end
 				end
-				if board[3][1] == "T" and board[3][3] == "T" and board[3][5] then
-					win2 = true
-				end
-				if board[5][1] == "T" and board[5][3] == "T" and board[5][5] then
+
+				if board[1][3] == "T" and board[3][3] == "T" and board[5][3] == "T" then
 					win2 = true
 				end
 
-				if board[1][1] == "T" and board[3][1] == "T" and board[5][1] then
-					win2 = true
-				end
-				if board[1][3] == "T" and board[3][3] == "T" and board[5][3] then
-					win2 = true
-				end
-				if board[1][5] == "T" and board[3][5] == "T" and board[5][5] then
+				if board[3][1] == "T" and board[3][3] == "T" and board[3][5] == "T" then
 					win2 = true
 				end
 
-				if board[1][1] == "T" and board[3][3] == "T" and board[5][5] then
+				if board[5][1] == "T" and board[5][3] == "T" and board[5][5] == "T" then
 					win2 = true
 				end
-				if board[1][5] == "T" and board[3][3] == "T" and board[5][1] then
-					win2 = true
+
+				if board[5][1] == "T" then
+					if board[3][3] == "T" and board[1][5] == "T" then
+						win2 = true
+					end
+
+					if board[5][3] == "T" and board[5][5] == "T" then
+						win2 = true
+					end
 				end
 			end
 
